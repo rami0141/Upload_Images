@@ -7,12 +7,15 @@
     <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 <body>
+    <div class="container mt-5">
+        <form method="POST" enctype="multipart/form-data" action="/upload" multiple>
+            <!-- create a javascript function if it's undefined or give a message -->
+            <input type="file" name="myImage">
+            <input type="submit" value="Submit">
+        </form>
 
-    <form method="POST" enctype="multipart/form-data" action="/upload">
-        <!-- create a javascript function if it's undefined or give a message -->
-        <input type="file" name="myImage">
-        <input type="submit" value="Submit">
-    </form>
-
+        <img src="/upload/comingsoon.JPG" alt="Coming Soon" width="412" height="205">
+        <img src="/upload/comingsoon.JPG" />
+    </div>
 </body>
 </html>
