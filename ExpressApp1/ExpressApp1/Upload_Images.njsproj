@@ -33,6 +33,7 @@
     <Compile Include="app.js" />
     <Content Include="index.html" />
     <Content Include="package.json" />
+    <Content Include="public\upload\comingsoon.JPG" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>

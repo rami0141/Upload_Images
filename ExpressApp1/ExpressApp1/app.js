@@ -59,17 +59,17 @@ app.post('/upload', (req, res) => {
         if (err) {
             res.send('error');
             console.log('error');
-            
+
         } else {
             res.sendFile(path.join(__dirname, "index.html"));
-         
+
         }
     });
 });
 
 app.get('/comingsoon.JPG', function (req, res) {
     res.sendfile(path.resolve('upload/comingsoon.JPG'));
-}); 
+});
 
 const port = 3000;
 app.listen(port, () => console.log('Server started on port ${port}'));
