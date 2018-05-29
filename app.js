@@ -14,7 +14,8 @@ const storage = multer.diskStorage({
     destination: './public/upload/',
     filename: function (req, file, cb) {
         // filedname is the name in the html - date.now will add a time stamp - extname is JPG, PNG, etc
-        cb(null, file.fieldname + '-' +  path.extname(file.originalname));
+        // path will extract the extension name - jpg, png, etc
+        cb(null, file.fieldname + '-' +  Date.now() + path.extname(file.originalname));
     }
 });
 
