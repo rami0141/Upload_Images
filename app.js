@@ -1,5 +1,4 @@
 ﻿'use strict';
-var debug = require('debug');
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
@@ -21,7 +20,9 @@ const storage = multer.diskStorage({
 
 //Init Upload
 const upload = multer({
+    // use storage engine
     storage: storage,
+    // specify size limig
     limits: { fileSize: 3000000 },
     fileFilter: function (req, file, cb) {
         checkFileType(file, cb);
@@ -49,7 +50,6 @@ var app = express();
 // public folder
 app.use(express.static('./public'))
 
-
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
@@ -66,9 +66,9 @@ app.post('/upload', (req, res) => {
     });
 });
 
-//app.get('/comingsoon.JPG', function (req, res) {
-//    res.sendfile(path.resolve('upload/comingsoon.JPG'));
-//});
+app.get('/myImage', function (req, res) {
+   res.sendfile(path.resolve('upload/myImage'));
+});
 
 const port = 3000;
 app.listen(port, () => console.log('Server started on port ${port}'));
