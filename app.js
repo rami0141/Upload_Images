@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     destination: './public/upload/',
     filename: function (req, file, cb) {
         // filedname is the name in the html - date.now will add a time stamp - extname is JPG, PNG, etc
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        cb(null, file.fieldname + '-' +  path.extname(file.originalname));
     }
 });
 
@@ -48,28 +48,26 @@ var app = express();
 // public folder
 app.use(express.static('./public'))
 
+
 app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
-//app.get('/', (req, res) => res.render('index'));
-// creating route - making a post request to /uploads
+
 app.post('/upload', (req, res) => {
     /*res.send('test');*/ //this sends text to the browser
     upload(req, res, (err) => {
         if (err) {
             res.send('error');
             console.log('error');
-
         } else {
             res.sendFile(path.join(__dirname, "index.html"));
-
         }
     });
 });
 
-app.get('/comingsoon.JPG', function (req, res) {
-    res.sendfile(path.resolve('upload/comingsoon.JPG'));
-});
+//app.get('/comingsoon.JPG', function (req, res) {
+//    res.sendfile(path.resolve('upload/comingsoon.JPG'));
+//});
 
 const port = 3000;
 app.listen(port, () => console.log('Server started on port ${port}'));
